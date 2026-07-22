@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Lanchonete do JÃO</title>
+</head>
+
+
+
+
+
+<body>
+    <h1>Cadastro de Cardápio</h1>
+
+    <div id="grupo">
+
+        <div id="form">
+            <div class="container-inputs">
+                <label for="input-nome">Nome</label>
+                <input id="input-nome" type="text">
+            </div>
+            <div class="container-inputs">
+                <label for="">Preço</label>
+                <input id="input-preco" type="number">
+            </div>
+            <div class="container-inputs">
+                <label for="">Categoria</label>
+                <input id="input-categoria" type="text">
+            </div>
+
+
+
+            <div class="container-inputs">
+                <label for="">Quantidade</label>
+                <input id="input-quantidade" type="number">
+            </div>
+            <div class="container-inputs">
+                <label for="">Tamanho</label>
+                <input id="input-tamanho" type="text">
+            </div>
+
+            <div class="container-inputs" id="div-id">
+                <label for="">ID</label>
+                <input id="input-id" type="number">
+            </div>
+
+
+            <button onclick="cadastrarProduto()">+</button>
+            <button onclick="salvarDino()">💾</button>
+            <button onclick="excluirDino()">🗑️</button>
+
+        </div>
+    </div>
+
+    <div id="painel-botoes">
+        <button id="btnMostrarTodos" onclick="mostrarTodos()">Mostrar Cardápio</button>
+        <!-- <button onclick="testar()">Teste</button> -->
+        <button id="btnPesquisa" onclick="pesquisar()">🔍</button>
+
+    </div>
+
+
+    <div id="painel-cardapio">
+
+    </div>
+    <button id="btnDashboard" onclick="dashboard()">Dashboard</button>
+    <div id="painel-dashboard">
+        
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
