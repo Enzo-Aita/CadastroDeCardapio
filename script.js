@@ -79,9 +79,8 @@ function mostrarTodos() {
         
         </div>
         `
-        
     }
-    carregarDados() 
+    carregarDados()
 }
 
 
