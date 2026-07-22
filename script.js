@@ -12,7 +12,6 @@
 
 
 
-// console.log(dino);
 
 let cardapio = []
 
@@ -80,63 +79,11 @@ function mostrarTodos() {
         
         </div>
         `
+        
     }
+    carregarDados() 
 }
 
-
-// function testar() {
-
-//     // window.location.href = 'teste.html'
-
-//     carregarDados()
-
-//     localStorage.setItem('teste', 45)
-
-//     let testeDeLeitura = localStorage.getItem('teste')
-//     console.log(testeDeLeitura);
-
-
-//     cardapio = [
-//         {
-//             id: 1718324500001,
-//             nome: "Rex",
-//             preco: 6.1,
-//             categoria: "#8B4513", // Marrom
-//             quantidade: 150000
-//         },
-//         {
-//             id: 1718324500002,
-//             nome: "Velo",
-//             preco: 2.0,
-//             categoria: "#2E8B57", // Verde escuro
-//             quantidade: 85000
-//         },
-//         {
-//             id: 1718324500003,
-//             nome: "Trike",
-//             preco: 3.0,
-//             categoria: "#708090", // Cinza
-//             quantidade: 120000
-//         },
-//         {
-//             id: 1718324500004,
-//             nome: "Braqui",
-//             preco: 13.0,
-//             categoria: "#556B2F", // Verde oliva
-//             quantidade: 250000
-//         },
-//         {
-//             id: 1718324500005,
-//             nome: "Ptero",
-//             preco: 1.5,
-//             categoria: "#4682B4", // Azul aço
-//             quantidade: 95000
-//         }
-//     ]
-
-//     console.log(cardapio);
-
-// }
 
 function pesquisar() {
     let nomeProcurado = document.getElementById('input-nome').value
@@ -156,7 +103,7 @@ function pesquisar() {
 
 }
 
-function salvarDino() {
+function salvarProduto() {
     let id = Number(document.getElementById('input-id').value)
 
     for (let i = 0; i < cardapio.length; i++) {
@@ -174,7 +121,7 @@ function salvarDino() {
     limparFormulario()
 }
 
-function excluirDino() {
+function excluirProduto() {
     let id = Number(document.getElementById('input-id').value)
 
     for (let i = 0; i < cardapio.length; i++) {
@@ -189,8 +136,6 @@ function excluirDino() {
 }
 
 function dashboard() {
-    document.getElementById('painel-cardapio').innerHTML = ""
-
     document.getElementById('painel-dashboard').innerHTML = ""
     let produtoMaisCaro = cardapio[0]
     for (let i = 1; i < cardapio.length; i++) {
@@ -198,5 +143,9 @@ function dashboard() {
             produtoMaisCaro = cardapio[i];
         }
     }
-     
-} 
+    console.log("Protudo mais caro:" + produtoMaisCaro.nome);
+
+}
+function voltar() {
+    document.getElementById('painel-cardapio').innerHTML = ""
+}

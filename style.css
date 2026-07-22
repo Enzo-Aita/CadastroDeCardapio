@@ -74,6 +74,13 @@ label {
 
 }
 
+#btnVoltar {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 10px;
+}
+
 #btnPesquisa {
     background-color: transparent;
     border-color: #ffffff;
@@ -100,4 +107,3 @@ label {
     color: #f9f8f3;
     border-radius: 10px;
 }
-
