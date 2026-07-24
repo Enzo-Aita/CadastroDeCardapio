@@ -64,6 +64,7 @@ function limparFormulario() {
 }
 
 function mostrarTodos() {
+    carregarDados()
     document.getElementById('painel-cardapio').innerHTML = ''
 
     for (let i = 0; i < cardapio.length; i++) {
@@ -80,7 +81,7 @@ function mostrarTodos() {
         </div>
         `
     }
-    carregarDados()
+    
 }
 
 
@@ -99,6 +100,8 @@ function pesquisar() {
         }
 
     }
+    salvarDados()
+    carregarDados()
 
 }
 
@@ -135,16 +138,30 @@ function excluirProduto() {
 }
 
 function dashboard() {
+    
     document.getElementById('painel-dashboard').innerHTML = ""
+
+
     let produtoMaisCaro = cardapio[0]
+    
     for (let i = 1; i < cardapio.length; i++) {
         if (cardapio[i].preco > produtoMaisCaro.preco) {
-            produtoMaisCaro = cardapio[i];
+            produtoMaisCaro = cardapio[i]
         }
     }
-    console.log("Protudo mais caro:" + produtoMaisCaro.nome);
+    document.getElementById("painel-dashboard").innerHTML = "Protudo mais caro: " + produtoMaisCaro.nome
+
+    let ProdutoMaisBarato = cardapio[0]
+    for(let i = 1; i <cardapio.length; i++){
+        if(cardapio[i].preco < ProdutoMaisBarato.preco){
+            ProdutoMaisBarato = cardapio[i]
+        }
+    }
+    console.log("Produto mais barato: " + ProdutoMaisBarato.nome);
+    
 
 }
-function voltar() {
+function fechar() {
     document.getElementById('painel-cardapio').innerHTML = ""
 }
+
