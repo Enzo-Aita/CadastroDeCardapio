@@ -1,5 +1,4 @@
-# Cadastro De Cardapio
-Simples Cadastro de produtos da Lanchonete do JÃO utilizando o CRUD
+
 # 🍔 Lanchonete do JÃO
 
 Sistema de gerenciamento de cardápio desenvolvido com **HTML, CSS e JavaScript**, permitindo cadastrar e visualizar produtos de uma lanchonete de forma simples e organizada.
