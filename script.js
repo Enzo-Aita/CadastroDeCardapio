@@ -18,8 +18,6 @@ let cardapio = []
 function salvarDados() {
     localStorage.setItem('cardapio', JSON.stringify(cardapio))
 
-    // let texto = JSON.stringify(cardapio)
-    // localStorage.setItem('cardapio', texto)
 }
 
 function carregarDados() {
@@ -46,10 +44,10 @@ function cadastrarProduto() {
 
     console.log(cardapio);
 
-    limparFormulario()
-    mostrarTodos()
-
     salvarDados()
+    mostrarTodos()
+    limparFormulario()
+
 }
 
 function limparFormulario() {
@@ -65,6 +63,7 @@ function limparFormulario() {
 
 function mostrarTodos() {
     carregarDados()
+
     document.getElementById('painel-cardapio').innerHTML = ''
 
     for (let i = 0; i < cardapio.length; i++) {
@@ -81,7 +80,8 @@ function mostrarTodos() {
         </div>
         `
     }
-    
+
+
 }
 
 
@@ -119,6 +119,7 @@ function salvarProduto() {
             console.log(i);
         }
     }
+    salvarDados()
     mostrarTodos()
     limparFormulario()
 }
@@ -133,35 +134,96 @@ function excluirProduto() {
             console.log(i);
         }
     }
+    salvarDados()
     mostrarTodos()
     limparFormulario()
 }
 
 function dashboard() {
-    
-    document.getElementById('painel-dashboard').innerHTML = ""
+
+    carregarDados()
+
+    if (cardapio.length == 0) {
+        document.getElementById("painel-dashboard").style.display = "block"
+        document.getElementById('painel-dashboard').innerHTML = ""
+
+        "<h2>Não existe produtos cadastrados</h2>"
+
+        return
+    }
+
+    document.getElementById("painel-dashboard").style.display = "block";
 
 
     let produtoMaisCaro = cardapio[0]
-    
+    let produtoMaisBarato = cardapio[0]
+    let quantidadeTotal = 0
+    let somaPrecos = 0
+    let bebidas = 0
+    let lanches = 0
+    let sobremesas = 0
+    let outros = 0
+
+
+
+
     for (let i = 1; i < cardapio.length; i++) {
         if (cardapio[i].preco > produtoMaisCaro.preco) {
             produtoMaisCaro = cardapio[i]
         }
     }
-    document.getElementById("painel-dashboard").innerHTML = "Protudo mais caro: " + produtoMaisCaro.nome
 
-    let ProdutoMaisBarato = cardapio[0]
-    for(let i = 1; i <cardapio.length; i++){
-        if(cardapio[i].preco < ProdutoMaisBarato.preco){
-            ProdutoMaisBarato = cardapio[i]
+    for (let i = 1; i < cardapio.length; i++) {
+        if (cardapio[i].preco < produtoMaisBarato.preco) {
+            produtoMaisBarato = cardapio[i]
         }
     }
-    console.log("Produto mais barato: " + ProdutoMaisBarato.nome);
-    
+    for (let i = 0; i < cardapio.length; i++) {
+
+        quantidadeTotal += Number(cardapio[i].quantidade)
+
+        somaPrecos += Number(cardapio[i].preco)
+
+        if (cardapio[i].categoria == "Bebida") {
+            bebidas++
+        } else if (cardapio[i].categoria == "Lanches") {
+            lanches++
+        } else if (cardapio[i].categoria == "Sobremesas") {
+            sobremesas++
+        } else {
+            outros++
+        }
+    }
+
+    let mediaPreco = somaPrecos / cardapio.length;
+
+    document.getElementById("mais-caro").innerHTML = produtoMaisCaro.nome + " - R$ " + produtoMaisCaro.preco;
+
+    document.getElementById("mais-barato").innerHTML = produtoMaisBarato.nome + " - R$ " + produtoMaisBarato.preco;
+
+    document.getElementById("total-produtos").innerHTML = cardapio.length;
+
+    document.getElementById("total-itens").innerHTML = quantidadeTotal;
+
+    document.getElementById("media-preco").innerHTML = mediaPreco.toFixed(2);
+
+    document.getElementById("bebidas").innerHTML = bebidas;
+
+    document.getElementById("lanches").innerHTML = lanches;
+
+    document.getElementById("sobremesas").innerHTML = sobremesas;
+
+    document.getElementById("outros").innerHTML = outros;
 
 }
+
+
+
 function fechar() {
     document.getElementById('painel-cardapio').innerHTML = ""
+}
+
+function fecharDashboard() {
+    document.getElementById("painel-dashboard").style.display = "none";
 }
 
