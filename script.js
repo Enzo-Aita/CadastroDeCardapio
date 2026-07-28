@@ -143,9 +143,13 @@ function dashboard() {
 
     carregarDados()
 
+    document.getElementById("grupo").style.display = "none"
+    document.getElementById("painel-botoes").style.display = "none"
+    document.getElementById("painel-cardapio").style.display = "none"
+
     if (cardapio.length == 0) {
         document.getElementById("painel-dashboard").style.display = "block"
-        document.getElementById('painel-dashboard').innerHTML = ""
+        document.getElementById("painel-dashboard").innerHTML = ""
 
         "<h2>Não existe produtos cadastrados</h2>"
 
@@ -163,21 +167,24 @@ function dashboard() {
     let lanches = 0
     let sobremesas = 0
     let outros = 0
-
-
-
-
+    
+    
+    
+    
     for (let i = 1; i < cardapio.length; i++) {
         if (cardapio[i].preco > produtoMaisCaro.preco) {
             produtoMaisCaro = cardapio[i]
         }
     }
+    document.getElementById("mais-caro").innerHTML = produtoMaisCaro.nome + " - R$ " + produtoMaisCaro.preco;
 
     for (let i = 1; i < cardapio.length; i++) {
         if (cardapio[i].preco < produtoMaisBarato.preco) {
             produtoMaisBarato = cardapio[i]
         }
     }
+    document.getElementById("mais-barato").innerHTML = produtoMaisBarato.nome + " - R$ " + produtoMaisBarato.preco;
+
     for (let i = 0; i < cardapio.length; i++) {
 
         quantidadeTotal += Number(cardapio[i].quantidade)
@@ -195,25 +202,21 @@ function dashboard() {
         }
     }
 
-    let mediaPreco = somaPrecos / cardapio.length;
+    let mediaPreco = somaPrecos / cardapio.length
 
-    document.getElementById("mais-caro").innerHTML = produtoMaisCaro.nome + " - R$ " + produtoMaisCaro.preco;
+    document.getElementById("total-produtos").innerHTML = cardapio.length
 
-    document.getElementById("mais-barato").innerHTML = produtoMaisBarato.nome + " - R$ " + produtoMaisBarato.preco;
+    document.getElementById("total-itens").innerHTML = quantidadeTotal
 
-    document.getElementById("total-produtos").innerHTML = cardapio.length;
+    document.getElementById("media-preco").innerHTML = mediaPreco.toFixed(2)
 
-    document.getElementById("total-itens").innerHTML = quantidadeTotal;
+    document.getElementById("bebidas").innerHTML = bebidas
 
-    document.getElementById("media-preco").innerHTML = mediaPreco.toFixed(2);
+    document.getElementById("lanches").innerHTML = lanches
 
-    document.getElementById("bebidas").innerHTML = bebidas;
+    document.getElementById("sobremesas").innerHTML = sobremesas
 
-    document.getElementById("lanches").innerHTML = lanches;
-
-    document.getElementById("sobremesas").innerHTML = sobremesas;
-
-    document.getElementById("outros").innerHTML = outros;
+    document.getElementById("outros").innerHTML = outros
 
 }
 
@@ -224,6 +227,10 @@ function fechar() {
 }
 
 function fecharDashboard() {
-    document.getElementById("painel-dashboard").style.display = "none";
+    document.getElementById("painel-dashboard").style.display = "none"
+    document.getElementById("grupo").style.display = ""
+    document.getElementById("painel-botoes").style.display = ""
+    document.getElementById("painel-cardapio").style.display = ""
+
 }
 
