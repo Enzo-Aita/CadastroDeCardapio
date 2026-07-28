@@ -13,9 +13,9 @@
 
 
 <body>
-    <h1>Cadastro de Cardápio</h1>
 
     <div id="grupo">
+        <h1>Cadastro de Cardápio</h1>
 
         <div id="form">
             <div class="container-inputs">
@@ -64,33 +64,51 @@
     </div>
     <button id="btnDashboard" onclick="dashboard()">Dashboard</button> <!-- abrir dashboard -->
     <div id="painel-dashboard">
-    <h2>📊 Dashboard</h2>
+        <h2 id="dashboard"> Dashboard</h2>
 
-    <p>Produto mais caro: <span id="mais-caro"></span></p>
+        <div class="container-cards">
+            <div id="card-caro" class="card-dashboard">
+                <h3> Produto mais caro:</h3>
+                <p id="mais-caro"></p>
+            </div>
+            <div id="card-barato" class="card-dashboard">
+                <h3> Produto mais barato:</h3>
+                <p id="mais-barato"></p>
+            </div>
 
-    <p>Produto mais barato: <span id="mais-barato"></span></p>
+            <div id="card-produtos" class="card-dashboard">
+                <h3> Produtos cadastrados:</h3>
+                <p id="total-produtos"></p>
+            </div>
 
-    <p>Total de produtos: <span id="total-produtos"></span></p>
+            <div id="card-itens" class="card-dashboard">
+                <h3> Total de itens:</h3>
+                <p id="total-itens"></p>
+            </div>
 
-    <p>Quantidade total de itens: <span id="total-itens"></span></p>
+            <div id="card-preco" class="card-dashboard">
+                <h3> Preço médio:</h3>
+                <p id="media-preco"></p>
+            </div>
 
-    <p>Preço médio: <span id="media-preco"></span></p>
+            <div id="card-bebidas" class="card-dashboard">
+                <h3>Bebidas:</h3>
+                <p id="bebidas"></p>
+            </div>
+            <div id="card-lanches" class="card-dashboard">
+                <h3>Lanches:</h3>
+                <p id="lanches"></p>
+            </div>
+            <div id="card-sobremesas" class="card-dashboard">
+                <h3>Sobremesas:</h3>
+                <p id="sobremesas"></p>
+            </div>
 
-    <hr>
+        </div>
 
-    <h3>Estatísticas</h3>
+        <button id="fecharDashboard" onclick="fecharDashboard()">Fechar</button> <!-- fechar dashboard -->
 
-    <p>Bebidas: <span id="bebidas"></span></p>
-
-    <p>Lanches: <span id="lanches"></span></p>
-
-    <p>Sobremesas: <span id="sobremesas"></span></p>
-
-    <p>Outros: <span id="outros"></span></p>
-
-    <button onclick="fecharDashboard()">Fechar</button>
-
-</div>
+    </div>
 
 
 
