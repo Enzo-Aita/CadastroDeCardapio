@@ -201,3 +201,24 @@ h1 {
     text-align: center;
 
 }
+
+#btnTestar {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 10px;
+}
+
+#btnExcluir {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 10px;
+}
+
+#btnSalvar {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+    border-radius: 10px;
+}

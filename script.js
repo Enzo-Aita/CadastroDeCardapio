@@ -1,7 +1,3 @@
-// C >> Create  >> Cadastrar
-// R   >> Read   >> Ler
-// U   >>  Update  >> alterar/atualizar/editar/fuçar/mudar
-// D   >>  Delete  >> Apagar/deletar/excluir
 
 
 let cardapio = []
@@ -9,15 +5,16 @@ let cardapio = []
 // função de salvar dados no localStorege
 function salvarDados() {
     localStorage.setItem('cardapio', JSON.stringify(cardapio))
+    localStorage.setItem('teste',JSON.stringify(teste))
 
 }
 //função de carregar os dados salvos no localStorege
 function carregarDados() {
 
     cardapio = JSON.parse(localStorage.getItem('cardapio')) || []
+    teste = JSON.parse(localStorage.getItem('teste')) || []
 
-    // let textoLido = localStorage.getItem('cardapio')
-    // cardapio = JSON.parse(textoLido)
+
 }
 //função de CREATE: Cadastrar
 function cadastrarProduto() {
@@ -227,3 +224,49 @@ function limparFormulario() {
     document.getElementById('input-nome').focus()
 }
 
+function testar() {
+    
+
+    carregarDados()
+
+    
+    teste = [
+        {
+            id: 1718324500001,
+            nome: "prato 1",
+            preco: 10,
+            categoria: "Lanches", 
+            quantidade: 5,
+            tamanho: "M"
+        },
+        {
+            id: 1718324500002,
+            nome: "prato 2",
+            preco: 15,
+            categoria: "Lanches", 
+            quantidade: 3,
+            tamanho: "G"
+        },
+        {
+            id: 1718324500003,
+            nome: "Bebida 1",
+            preco: 8,
+            categoria: "bebidas", 
+            quantidade: 5,
+            tamanho: "P"
+        },
+        {
+            id: 1718324500004,
+            nome: "sobremesa 1",
+            preco: 16,
+            categoria: "Sobremesas", 
+            quantidade: 5,
+            tamanho: "P"
+        },
+    ]
+
+
+    console.log(teste);
+    salvarDados()
+
+}
