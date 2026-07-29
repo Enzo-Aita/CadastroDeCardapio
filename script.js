@@ -53,7 +53,7 @@ function mostrarTodos() {
     for (let i = 0; i < cardapio.length; i++) {
         // alert(cardapio[i].nome)
         document.getElementById('painel-cardapio').innerHTML +=
-            `<div class="card-dino">
+            `<div class="card-cardapio">
         <h2>${cardapio[i].nome}</h2>
         <p>Preco: R$ ${cardapio[i].preco}</p>
         <p>Categoria: ${cardapio[i].categoria}</p>
@@ -66,7 +66,7 @@ function mostrarTodos() {
     }
     for (let i = 0; i < teste.length; i++) {
         document.getElementById('painel-cardapio').innerHTML +=
-            `<div class="card-dino">
+            `<div class="card-teste">
         <h2>${teste[i].nome}</h2>
         <p>Preco: R$ ${teste[i].preco}</p>
         <p>Categoria: ${teste[i].categoria}</p>
@@ -191,9 +191,9 @@ function dashboard() {
 
         somaPrecos += Number(cardapio[i].preco)
 
-        if (cardapio[i].categoria == "Bebida") {
+        if (cardapio[i].categoria == "bebidas") {
             bebidas++
-        } else if (cardapio[i].categoria == "Lanches") {
+        } else if (cardapio[i].categoria == "lanches") {
             lanches++
         } else if (cardapio[i].categoria == "sucos") {
             sucos++
