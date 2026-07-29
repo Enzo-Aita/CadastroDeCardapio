@@ -5,15 +5,18 @@ let cardapio = []
 // função de salvar dados no localStorege
 function salvarDados() {
     localStorage.setItem('cardapio', JSON.stringify(cardapio))
-    localStorage.setItem('teste',JSON.stringify(teste))
-
+}
+// função de salvar dados teste no localStorege
+function salvarDadosTeste() {
+    localStorage.setItem('teste', JSON.stringify(teste))
 }
 //função de carregar os dados salvos no localStorege
 function carregarDados() {
-
     cardapio = JSON.parse(localStorage.getItem('cardapio')) || []
+}
+//função de carregar os dados teste salvos no localStorege
+function carregarDadosTeste() {
     teste = JSON.parse(localStorage.getItem('teste')) || []
-
 
 }
 //função de CREATE: Cadastrar
@@ -42,14 +45,15 @@ function cadastrarProduto() {
 //função READ: Mostrar todos os produtos cadastrados
 function mostrarTodos() {
     carregarDados()
-    
+    carregarDadosTeste()
+
     document.getElementById("grupo").style.display = "none"
     document.getElementById('painel-cardapio').innerHTML = ""
-    
+
     for (let i = 0; i < cardapio.length; i++) {
         // alert(cardapio[i].nome)
         document.getElementById('painel-cardapio').innerHTML +=
-        `<div class="card-dino">
+            `<div class="card-dino">
         <h2>${cardapio[i].nome}</h2>
         <p>Preco: R$ ${cardapio[i].preco}</p>
         <p>Categoria: ${cardapio[i].categoria}</p>
@@ -60,14 +64,27 @@ function mostrarTodos() {
         </div>
         `
     }
+    for (let i = 0; i < teste.length; i++) {
+        document.getElementById('painel-cardapio').innerHTML +=
+            `<div class="card-dino">
+        <h2>${teste[i].nome}</h2>
+        <p>Preco: R$ ${teste[i].preco}</p>
+        <p>Categoria: ${teste[i].categoria}</p>
+        <p>Quantidade: ${teste[i].quantidade}</p>
+        <p>Tamanho: ${teste[i].tamanho}</p>
+        <p>${teste[i].id}</p>
+        
+        </div>
+        `
 
-    
+    }
 }
+
 
 //funcção pesquisar por produto
 function pesquisar() {
     let nomeProcurado = document.getElementById('input-nome').value
-    
+
     for (let i = 0; i < cardapio.length; i++) {
         if (nomeProcurado == cardapio[i].nome) {
             console.log(cardapio[i]);
@@ -78,11 +95,11 @@ function pesquisar() {
             document.getElementById('input-id').value = cardapio[i].id
             console.log(i);
         }
-        
+
     }
     salvarDados()
     carregarDados()
-    
+
 }
 
 // função UPDATE salvar/alterar produto
@@ -108,7 +125,7 @@ function salvarProduto() {
 //função DELETE: Deletar um item cadastrado
 function excluirProduto() {
     let id = Number(document.getElementById('input-id').value)
-    
+
     for (let i = 0; i < cardapio.length; i++) {
         if (id == cardapio[i].id) {
             console.log(cardapio[i]);
@@ -125,23 +142,23 @@ function excluirProduto() {
 function dashboard() {
 
     carregarDados()
-    
+
     document.getElementById("grupo").style.display = "none"
     document.getElementById("painel-botoes").style.display = "none"
     document.getElementById("painel-cardapio").style.display = "none"
-    
+
     if (cardapio.length == 0) {
         document.getElementById("painel-dashboard").style.display = "block"
         document.getElementById("painel-dashboard").innerHTML = ""
 
         "<h2>Não existe produtos cadastrados</h2>"
-        
+
         return
     }
-    
+
     document.getElementById("painel-dashboard").style.display = "block";
 
-    
+
     let produtoMaisCaro = cardapio[0]
     let produtoMaisBarato = cardapio[0]
     let quantidadeTotal = 0
@@ -151,29 +168,29 @@ function dashboard() {
     let sobremesas = 0
     let outros = 0
 
-    
-    
-    
+
+
+
     for (let i = 1; i < cardapio.length; i++) {
         if (cardapio[i].preco > produtoMaisCaro.preco) {
             produtoMaisCaro = cardapio[i]
         }
     }
     document.getElementById("mais-caro").innerHTML = produtoMaisCaro.nome + " - R$ " + produtoMaisCaro.preco;
-    
+
     for (let i = 1; i < cardapio.length; i++) {
         if (cardapio[i].preco < produtoMaisBarato.preco) {
             produtoMaisBarato = cardapio[i]
         }
     }
     document.getElementById("mais-barato").innerHTML = produtoMaisBarato.nome + " - R$ " + produtoMaisBarato.preco;
-    
+
     for (let i = 0; i < cardapio.length; i++) {
-        
+
         quantidadeTotal += Number(cardapio[i].quantidade)
-        
+
         somaPrecos += Number(cardapio[i].preco)
-        
+
         if (cardapio[i].categoria == "Bebida") {
             bebidas++
         } else if (cardapio[i].categoria == "Lanches") {
@@ -182,21 +199,21 @@ function dashboard() {
             sobremesas++
         }
     }
-    
+
     let mediaPreco = somaPrecos / cardapio.length
-    
+
     document.getElementById("total-produtos").innerHTML = cardapio.length
-    
+
     document.getElementById("total-itens").innerHTML = quantidadeTotal
-    
+
     document.getElementById("media-preco").innerHTML = "R$" + mediaPreco.toFixed(2)
-    
+
     document.getElementById("bebidas").innerHTML = bebidas
-    
+
     document.getElementById("lanches").innerHTML = lanches
-    
+
     document.getElementById("sobremesas").innerHTML = sobremesas
-    
+
 }
 
 //função fechar cardápio
@@ -211,7 +228,7 @@ function fecharDashboard() {
     document.getElementById("grupo").style.display = ""
     document.getElementById("painel-botoes").style.display = ""
     document.getElementById("painel-cardapio").style.display = ""
-    
+
 }
 function limparFormulario() {
     document.getElementById('input-nome').value = ''
@@ -225,17 +242,17 @@ function limparFormulario() {
 }
 
 function testar() {
-    
 
-    carregarDados()
 
-    
+    carregarDadosTeste()
+
+
     teste = [
         {
             id: 1718324500001,
             nome: "prato 1",
             preco: 10,
-            categoria: "Lanches", 
+            categoria: "Lanches",
             quantidade: 5,
             tamanho: "M"
         },
@@ -243,7 +260,7 @@ function testar() {
             id: 1718324500002,
             nome: "prato 2",
             preco: 15,
-            categoria: "Lanches", 
+            categoria: "Lanches",
             quantidade: 3,
             tamanho: "G"
         },
@@ -251,7 +268,7 @@ function testar() {
             id: 1718324500003,
             nome: "Bebida 1",
             preco: 8,
-            categoria: "bebidas", 
+            categoria: "bebidas",
             quantidade: 5,
             tamanho: "P"
         },
@@ -259,7 +276,7 @@ function testar() {
             id: 1718324500004,
             nome: "sobremesa 1",
             preco: 16,
-            categoria: "Sobremesas", 
+            categoria: "Sobremesas",
             quantidade: 5,
             tamanho: "P"
         },
@@ -267,6 +284,6 @@ function testar() {
 
 
     console.log(teste);
-    salvarDados()
+    salvarDadosTeste()
 
 }
