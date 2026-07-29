@@ -165,7 +165,7 @@ function dashboard() {
     let somaPrecos = 0
     let bebidas = 0
     let lanches = 0
-    let sobremesas = 0
+    let sucos = 0
     let outros = 0
 
 
@@ -195,8 +195,8 @@ function dashboard() {
             bebidas++
         } else if (cardapio[i].categoria == "Lanches") {
             lanches++
-        } else if (cardapio[i].categoria == "Sobremesas") {
-            sobremesas++
+        } else if (cardapio[i].categoria == "sucos") {
+            sucos++
         }
     }
 
@@ -212,7 +212,7 @@ function dashboard() {
 
     document.getElementById("lanches").innerHTML = lanches
 
-    document.getElementById("sobremesas").innerHTML = sobremesas
+    document.getElementById("sucos").innerHTML = sucos
 
 }
 
@@ -274,9 +274,9 @@ function testar() {
         },
         {
             id: 1718324500004,
-            nome: "sobremesa 1",
+            nome: "Sucos 1",
             preco: 16,
-            categoria: "Sobremesas",
+            categoria: "Sucos",
             quantidade: 5,
             tamanho: "P"
         },
