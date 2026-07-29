@@ -1,5 +1,3 @@
-
-
 let cardapio = []
 
 // função de salvar dados no localStorege
@@ -19,7 +17,9 @@ function carregarDadosTeste() {
     teste = JSON.parse(localStorage.getItem('teste')) || []
 
 }
-//função de CREATE: Cadastrar
+// função de CREATE: Cadastrar
+// cria novo produto com ID unico (Date.now()),nome,preço...
+// salva o produto no localStorage e atualiza a lista 
 function cadastrarProduto() {
 
     carregarDados()
@@ -37,12 +37,14 @@ function cadastrarProduto() {
     console.log(cardapio);
 
     salvarDados()
-    mostrarTodos()
+    // mostrarTodos()
     limparFormulario()
 
 }
 
 //função READ: Mostrar todos os produtos cadastrados
+// carrega os produtos salvos
+// exibe eles em formato de cards mostrandos as informações cadastradas
 function mostrarTodos() {
     carregarDados()
     carregarDadosTeste()
@@ -51,7 +53,6 @@ function mostrarTodos() {
     document.getElementById('painel-cardapio').innerHTML = ""
 
     for (let i = 0; i < cardapio.length; i++) {
-        // alert(cardapio[i].nome)
         document.getElementById('painel-cardapio').innerHTML +=
             `<div class="card-cardapio">
         <h2>${cardapio[i].nome}</h2>
@@ -82,6 +83,9 @@ function mostrarTodos() {
 
 
 //funcção pesquisar por produto
+// busca produto pelo nome
+// preenche automaticamente o formulário com os dados 
+// facilita a altera ou excluir o produto
 function pesquisar() {
     let nomeProcurado = document.getElementById('input-nome').value
 
@@ -103,18 +107,18 @@ function pesquisar() {
 }
 
 // função UPDATE salvar/alterar produto
+// localiza o produto pelo ID
+//atualiza/altera as informações, salvando as no localStorage
 function salvarProduto() {
     let id = Number(document.getElementById('input-id').value)
 
     for (let i = 0; i < cardapio.length; i++) {
         if (id == cardapio[i].id) {
-            // console.log(cardapio[i]);
             cardapio[i].preco = document.getElementById('input-preco').value
             cardapio[i].categoria = document.getElementById('input-categoria').value
             cardapio[i].quantidade = document.getElementById('input-quantidade').value
             cardapio[i].tamanho = document.getElementById('input-tamanho').value
             cardapio[i].id = document.getElementById('input-id').value
-            // console.log(i);
         }
     }
     salvarDados()
@@ -123,6 +127,8 @@ function salvarProduto() {
 }
 
 //função DELETE: Deletar um item cadastrado
+// remove um produto da lista pelo ID
+// e atualiza os dados na lista
 function excluirProduto() {
     let id = Number(document.getElementById('input-id').value)
 
@@ -138,7 +144,13 @@ function excluirProduto() {
     limparFormulario()
 }
 
-//função do dashboard: abrir card
+//função do dashboard:
+// pega os dados no localStorage
+//exibe apenas o dashboard
+//percorre o vetor cardapio todo para descobrir as informações 
+//calcula media de preço
+//atualiza e mostra os resultados
+
 function dashboard() {
 
     carregarDados()
@@ -146,16 +158,6 @@ function dashboard() {
     document.getElementById("grupo").style.display = "none"
     document.getElementById("painel-botoes").style.display = "none"
     document.getElementById("painel-cardapio").style.display = "none"
-
-    if (cardapio.length == 0) {
-        document.getElementById("painel-dashboard").style.display = "block"
-        document.getElementById("painel-dashboard").innerHTML = ""
-
-        "<h2>Não existe produtos cadastrados</h2>"
-
-        return
-    }
-
     document.getElementById("painel-dashboard").style.display = "block";
 
 
@@ -230,6 +232,7 @@ function fecharDashboard() {
     document.getElementById("painel-cardapio").style.display = ""
 
 }
+//limpa todo os compos do formulário para proximo operação
 function limparFormulario() {
     document.getElementById('input-nome').value = ''
     document.getElementById('input-preco').value = ''
@@ -240,7 +243,8 @@ function limparFormulario() {
 
     document.getElementById('input-nome').focus()
 }
-
+//gerar dados de teste automaticos
+// facilitar a demostração do sistema
 function testar() {
 
 
